@@ -25,8 +25,6 @@ for line in input:
     identity_index, identity = zip(*rightIdentities)
     r = identity[identity_index.index(max(identity_index))]
 
-    print(l+r, line)
-
     result +=  l+r
 
 print(result)
