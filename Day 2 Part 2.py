@@ -1,9 +1,5 @@
 input = open('.\Day 2 Input' ,'r')
 
-MAX_RED = 12
-MAX_GREEN = 13
-MAX_BLUE = 14
-
 powerSum = 0
 
 for line in input:
