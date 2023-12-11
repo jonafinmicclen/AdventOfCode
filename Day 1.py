@@ -7,8 +7,6 @@ result = 0
 
 for line in input:
 
-    line = line.lower()
-
     leftIdentities = []
     rightIdentities = []
 
@@ -20,11 +18,11 @@ for line in input:
             pass
 
     identity_index, identity = zip(*leftIdentities)
-    l = identity[identity_index.index(min(identity_index))] * 10
+    firstNumber = identity[identity_index.index(min(identity_index))] * 10
 
     identity_index, identity = zip(*rightIdentities)
-    r = identity[identity_index.index(max(identity_index))]
+    lastNumber = identity[identity_index.index(max(identity_index))]
 
-    result +=  l+r
+    result +=  firstNumber + lastNumber 
 
 print(result)
