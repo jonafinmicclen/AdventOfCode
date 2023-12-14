@@ -1,7 +1,7 @@
 import numpy as np
 input = open('.\Day 3 Input' ,'r')
 
-nonSymbols = ['1','2','3','4','5','6','7,','8','9','0','.']
+nonSymbols = ['1','2','3','4','5','6','7','8','9','0','.']
 symbols = []
 
 #Load file into array
@@ -18,30 +18,35 @@ for line in input:
 
 inputArray = np.array(inputArray)
 SYMBOLS = set(symbols)
+
 height, width = inputArray.shape
 isNumber = False
 isValid = False
 currentNumber = ''
 totalSum =  0
 
-for y in range(height):
-    for x in range (width):
+print(SYMBOLS)
+print(inputArray.shape)
 
-        if str(inputArray[y,x]).isnumeric(): 
+for x in range (width):
+    for y in range(height):
+
+        if str(inputArray[x,y]).isnumeric(): 
             
-            currentNumber += inputArray[y,x]
             isNumber = True
+            currentNumber += inputArray[x,y]
 
-            for xOffset in range(-1,2): #Faster method by checking on grid and adding 2 rows and columns of '.'
-                for yOffset in range(-1,2):
-                    
-                    if 0 <= y+yOffset < inputArray.shape[0] and 0 <= x+xOffset < inputArray.shape[1] and inputArray[y+yOffset,x+xOffset] in SYMBOLS:
+            for xOffset in range(-1+x,2+x): #Faster method by checking on grid and adding 2 rows and columns of '.'
+                for yOffset in range(-1+y,2+y):
+
+                    if 0 <= xOffset < inputArray.shape[0] and 0 <= yOffset < inputArray.shape[1] and inputArray[xOffset,yOffset] in SYMBOLS:
                             isValid = True
 
         else:
 
             if isNumber and isValid:
                 totalSum += int(currentNumber)
+                print(currentNumber, 'is valid')
 
             currentNumber = ''
             isNumber = False
